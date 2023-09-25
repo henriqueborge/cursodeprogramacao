@@ -5,4 +5,4 @@ capacidade= 18
 latas= litros/capacidade
 total= latas* valor
 print("voce precisara de",latas,"latas")
-print("o valor sera de",total, "reias")
+print("o valor sera de",total, "reais")
