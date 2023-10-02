@@ -44,7 +44,12 @@ def atualizar_produto(produtos, indice, nome, valor, quantidade, imp1, imp2, imp
         print("dados do produto atualizado com sucesso")
     else:
         print("indice do produto invalido")
-
+def deletar_produto(produtos, indice,):
+    if indice >= 0 and indice < len(produtos):
+        del produtos[indice]
+        print("produto deletado com sucesso")
+    else:
+        print("indice do produto não existe")
 produtos = []
 
 #Menu da função
@@ -53,7 +58,8 @@ while True:
     print("1. cadastrar produto")
     print("2. imprimir produto")
     print("3. atualizar produto")
-    print("4. sair")
+    print("4. deletar produto")
+    print("5. sair")
     
     opcao = int(input("Escolha uma opção"))
     
@@ -97,6 +103,9 @@ while True:
         venda = custo+lucro
         atualizar_produto(produtos, indice, nome, valor, quantidade, imp1, imp2, imp3, frete, custo, lucro, venda)
     elif opcao == 4:
+        indice= int(input("digite indice do produto"))
+        deletar_produto(produtos, indice)
+    elif opcao == 5:
         print("saindo.")
         break
     else:
