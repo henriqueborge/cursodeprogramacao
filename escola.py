@@ -17,12 +17,13 @@ def imprimir_alunos(alunos):
         print(f"Snota {aluno['Snota']}")
         print(f"Tnota {aluno['Tnota']}")
         print(f"Qnota {aluno['Qnota']}")
-def atualizar_notas(alunos, indice, pnota, snota, tnota, qnota):
+def atualizar_notas(alunos, indice, pnota, snota, tnota, qnota, media):
     if indice >= 0 and indice < len(alunos):
         alunos[indice]['Pnota']=pnota
         alunos[indice]['Snota']=snota
         alunos[indice]['Tnota']=tnota
         alunos[indice]['Qnota']=qnota
+        alunos[indice]['media']=media
         print("dados do aluno atualizados com sucesso!")
     else:
         print("indice do aluno é invalido!")
@@ -39,10 +40,17 @@ def calcular_media(alunos):
         print(f"media: {aluno['media']}")
 def alunos_aprovados(alunos):
     for indice, aluno in enumerate (alunos):
-        print(f"Alunos {indice +1}")
-        print(f"Nome: {aluno['Nome']}")
-        print(f"media: {aluno['media']}")
-
+        if aluno['media'] >= 7:
+            print("aluno aprovado:")
+            print(f"Nome: {aluno['Nome']}")
+            print(f"Media: {aluno['media']}")
+def alunos_reprovados(alunos):
+    for indice, aluno in enumerate (alunos):
+        if aluno['media'] < 7:
+            print("aluno reprovado:")
+            print(f"Nome: {aluno['Nome']}")
+            print(f"Media: {aluno['media']}")
+        
 alunos=[]
 
 while True:
@@ -53,7 +61,8 @@ while True:
     print("4. deletar cadastro")
     print("5. calcular media dos alunos")
     print("6. mostrar alunos aprovados")
-    print("7. encerrar cadastro")
+    print("7. mostrar alunos reprovados")
+    print("8. encerrar cadastro")
 
     opcao = int(input("escolha uma opção: "))
 
@@ -64,7 +73,7 @@ while True:
         tnota = float(input("digite terceira nota do aluno: "))
         qnota = float(input("digite quarta nota do aluno: "))
         media=(pnota+snota+tnota+qnota)
-        media = media/4
+        media = float(media/4)
         cadastrar_aluno(alunos, nome, pnota, snota, tnota, qnota, media)
     elif opcao == 2:
         imprimir_alunos(alunos)
@@ -74,15 +83,19 @@ while True:
         snota = float(input("atualize segunda nota do aluno: "))
         tnota = float(input("atualize terceira nota do aluno: "))
         qnota = float(input("atualize quarta nota do aluno: "))
-        atualizar_notas(alunos, indice, pnota, snota, tnota, qnota)
+        media=(pnota+snota+tnota+qnota)
+        media = float(media/4)
+        atualizar_notas(alunos, indice, pnota, snota, tnota, qnota, media)
     elif opcao == 4:
         indice= int(input("digite o indice do aluno: "))
         deletar_cadastro(alunos, indice)
     elif opcao == 5:
-        media=(pnota+snota+tnota+qnota)
-        media = media/4
         calcular_media(alunos)
+    elif opcao == 6:
+        alunos_aprovados(alunos)
     elif opcao == 7:
+        alunos_reprovados(alunos)
+    elif opcao == 8:
         print("encerrando cadastro.")
         break
     else:
