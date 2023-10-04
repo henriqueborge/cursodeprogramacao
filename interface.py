@@ -11,7 +11,7 @@ def ler_dados_csv():
     with open('arquivo.csv', mode='r') as arquivo_csv:
         leitor_csv = csv.DictReader(arquivo_csv)
         for linha in leitor_csv:
-            print(f"Nome: {linha['nome']}, Email{linha['email']}, Telefone: {linha['telefone']}")
+            print(f"Nome: {linha['nome']}, Email: {linha['email']}, Telefone: {linha['telefone']}")
         
 
 clientes = []
