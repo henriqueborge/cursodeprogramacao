@@ -7,4 +7,5 @@ while paisB > paisA:
     paisA = populacaoA + paisA
     paisB = populacaoB + paisB
     tempo = tempo + 1
-    print("o pais A vai ultrapassar o pais B em",tempo,"anos")
+
+print("o pais A vai ultrapassar o pais B em",tempo,"anos")

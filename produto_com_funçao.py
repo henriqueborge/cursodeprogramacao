@@ -15,10 +15,6 @@ def imprimir_produtos(produtos):
         print(f"Nome: {produto ['Nome']}")
         print(f"Valor: {produto ['Valor']}")
         print(f"Quantidade: {produto ['Quantidade']}")
-def valor_total(produtos):
-    for indice in enumerate(produtos):
-        print(valor * quantidade)
-        print("****************************")
         
 produtos = []
 
@@ -40,7 +36,6 @@ while True:
         cadastrar_produto(produtos, nome, valor, quantidade)
     elif opcao == 2:
         imprimir_produtos(produtos)
-        valor_total(produtos)
     elif opcao == 3:
         print("saindo.")
         break

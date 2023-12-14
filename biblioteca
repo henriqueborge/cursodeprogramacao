@@ -1,0 +1,72 @@
+class Livro:
+    def __init__(self, titulo, autor, editora):
+        self.titulo = titulo
+        self.autor = autor
+        self.editora = editora
+
+class Biblioteca:
+    def __init__(self):
+        self.livros = []
+
+    def adicionar_livro(self, titulo, autor, editora):
+        livro = Livro(titulo, autor, editora)
+        self.livros.append(livro)
+        print(f'O livro "{titulo}" foi adicionado à biblioteca.')
+
+    def atualizar_livro(self, titulo, autor, editora):
+        for livro in self.livros:
+            if livro.titulo == titulo:
+                livro.autor = autor
+                livro.editora = editora
+                print(f'Informações do livro "{titulo}" atualizadas.')
+
+    def deletar_livro(self, titulo):
+        for livro in self.livros:
+            if livro.titulo == titulo:
+                self.livros.remove(livro)
+                print(f'O livro "{titulo}" foi removido da biblioteca.')
+                return
+        print(f'O livro "{titulo}" não foi encontrado na biblioteca.')
+
+    def listar_livros(self):
+        if not self.livros:
+            print('A biblioteca está vazia.')
+        else:
+            print('Lista de livros na biblioteca:')
+            for livro in self.livros:
+                print(f'Título: {livro.titulo}, Autor: {livro.autor}, Editora: {livro.editora}')
+
+def exibir_menu():
+    print("Escolha uma opção:")
+    print("1. Adicionar livro")
+    print("2. Atualizar livro")
+    print("3. Deletar livro")
+    print("4. Listar livros")
+    print("5. Sair")
+
+biblioteca = Biblioteca()
+
+while True:
+    exibir_menu()
+    opcao = input("Opção: ")
+
+    if opcao == "1":
+        titulo = input("Título do livro: ")
+        autor = input("Autor do livro: ")
+        editora = input("Editora do livro: ")
+        biblioteca.adicionar_livro(titulo, autor, editora)
+    elif opcao == "2":
+        titulo = input("Título do livro a ser atualizado: ")
+        autor = input("Novo autor: ")
+        editora = input("Nova editora: ")
+        biblioteca.atualizar_livro(titulo, autor, editora)
+    elif opcao == "3":
+        titulo = input("Título do livro a ser removido: ")
+        biblioteca.deletar_livro(titulo)
+    elif opcao == "4":
+        biblioteca.listar_livros()
+    elif opcao == "5":
+        print("Saindo do programa.")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha uma opção válida.")
